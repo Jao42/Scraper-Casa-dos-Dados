@@ -300,9 +300,12 @@ class App(ctk.CTk):
         self.grid_rowconfigure(2, weight=1)
         self.resizable(width=False, height=False)
 
-        assets = os.path.join(os.path.dirname(__file__), "..", "assets")
+        assets = os.path.join(os.path.dirname(__file__), "../assets")
 
-        self.iconbitmap(os.path.join(assets, "icon.ico"))
+        if "nt" == os.name:
+            self.iconbitmap(os.path.join(assets, "icon.ico"))
+        else:
+            self.iconbitmap("@" + os.path.join(assets, "icon.xbm"))
 
         self.radio_var = ctk.IntVar(value=0)
 
