@@ -65,8 +65,7 @@ async def get_cnpj_data(session, semaphore, cnpj, cancel):
                         dados_selecionados[f"contato_telefonico_1"] = json_response["contato_telefonico"][0]["completo"]
                     else:
                         for i, contato in enumerate(json_response["contato_telefonico"], start=1):
-                            dados_selecionados[f"contato_telefonico_{
-                                i}"] = contato["completo"]
+                            dados_selecionados[f"contato_telefonico_{i}"] = contato["completo"]
 
                     # Adicionando colunas para cada e-mail
                     if not json_response["contato_email"]:
@@ -75,8 +74,7 @@ async def get_cnpj_data(session, semaphore, cnpj, cancel):
                         dados_selecionados[f"contato_email_1"] = json_response["contato_email"][0]["email"]
                     else:
                         for i, email in enumerate(json_response["contato_email"], start=1):
-                            dados_selecionados[f"contato_email_{
-                                i}"] = email["email"]
+                            dados_selecionados[f"contato_email_{i}"] = email["email"]
                     lista_dict_dados_cnpj.append(dados_selecionados)
                 else:
                     print(f"Falha ao buscar CNPJ {cnpj}: {response.status}")
@@ -113,8 +111,7 @@ async def get_cnpj_data_async(cnpjs, file_name, status_update, cancel):
             return
 
         save_excel(df, file_name)
-        status_update(f"Finalizado... salvos {
-                      len(lista_dict_dados_cnpj)} CNPJ(s)")
+        status_update(f"Finalizado... salvos {len(lista_dict_dados_cnpj)} CNPJ(s)")
         return len(lista_dict_dados_cnpj)
     except Exception as e:
         print(f"Erro ao buscar CNPJs {e}")

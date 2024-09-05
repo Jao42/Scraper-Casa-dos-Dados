@@ -370,8 +370,9 @@ class App(ctk.CTk):
                                             command=self.radiobutton_event, radiobutton_width=13, radiobutton_height=13)
         self.radio_csv.grid(row=8, column=3, padx=0, pady=0, sticky="e")
 
-        self.file_entry_var = ctk.Variable(value=f"{datetime.strftime(
-            datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}")
+        self.file_entry_var = ctk.Variable(
+                value=f"{datetime.strftime(datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}"
+                )
         self.file_entry = ctk.CTkEntry(self, textvariable=self.file_entry_var)
         self.file_entry.grid(row=9, column=1, padx=10, pady=20, sticky="ew")
 
@@ -407,13 +408,11 @@ class App(ctk.CTk):
         directory = self.get_save_folder()
         if directory == '':
             return
-        file_location = f"{
-            directory}/{datetime.strftime(datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}"
+        file_location = f"{directory}/{datetime.strftime(datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}"
         self.file_entry_var.set(file_location.replace('//', '/'))
 
     def radiobutton_event(self):
-        self.file_entry_var.set(f"{datetime.strftime(
-            datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}")
+        self.file_entry_var.set(f"{datetime.strftime(datetime.now(), '%d-%m-%Y %H-%M')}.{self.file_type_var.get()}")
 
     def progress_bar_update(self, step):
         self.progress_bar.set(step)
@@ -523,8 +522,7 @@ class App(ctk.CTk):
 
             if cancel.is_set():
                 return
-            App.status_update(self, text=f"Encontrados {
-                              len(cnpjs)} CNPJ(s), iniciando extração...")
+            App.status_update(self, text=f"Encontrados {len(cnpjs)} CNPJ(s), iniciando extração...")
             self.progress_bar.configure(mode="indeterminate")
             self.progress_bar.start()
 

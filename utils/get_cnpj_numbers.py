@@ -162,10 +162,8 @@ async def get_cnpj_numbers(playwright, json_filters, progressbar, status_update,
             break
         except PlaywrightTimeoutError as e:
             attempts += 1
-            status_update(text=f"Tempo excedido, tentativa {attempts} de {
-                          max_attempts}. Tentando novamente...")
-            print(f"Timeout occurred. Attempt {
-                  attempts} of {max_attempts}. Retrying...")
+            status_update(text=f"Tempo excedido, tentativa {attempts} de {max_attempts}. Tentando novamente...")
+            print(f"Timeout occurred. Attempt {attempts} of {max_attempts}. Retrying...")
             await browser.close()  # Fecha o browser antes de tentar novamente
         except Exception as e:
             status_update(text=f"Erro ao buscar número de CNPJs: {e}")
